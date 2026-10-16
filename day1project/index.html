@@ -1,62 +1,109 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BWAIW Study Planner — Past Questions to N-Day Plan</title>
-<link rel="stylesheet" href="styles.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Day One — Study plan</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #e8ebe6;
+  --surface-warm: var(--surface);
+  --fg: #0e0f0c;
+  --fg-2: var(--fg);
+  --muted: #868685;
+  --meta: var(--muted);
+  --border: rgba(14, 15, 12, 0.12);
+  --border-soft: var(--border);
+  --accent: #9fe870;
+  --accent-on: #163300;
+  --accent-hover: #cdffad;
+  --accent-active: color-mix(in oklab, var(--accent), black 12%);
+  --success: #054d28;
+  --warn: #ffd11a;
+  --danger: #d03238;
+  --font-display: "Wise Sans", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-body: Inter, Helvetica, Arial, ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+  --text-xs: 12px; --text-sm: 14px; --text-base: 18px; --text-lg: 22px; --text-xl: 26px; --text-2xl: 40px; --text-3xl: 64px; --text-4xl: 96px;
+  --leading-body: 1.44; --leading-tight: 0.85; --tracking-display: normal;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+  --section-y-desktop: 80px; --section-y-tablet: 48px; --section-y-phone: 32px;
+  --radius-sm: 16px; --radius-md: 30px; --radius-lg: 40px; --radius-pill: 9999px;
+  --elev-flat: none; --elev-ring: 0 0 0 1px var(--border); --elev-raised: 0 0 0 1px var(--border), 0 2px 8px rgba(14, 15, 12, 0.04);
+  --focus-ring: 0 0 0 3px color-mix(in oklab, var(--accent), transparent 60%);
+  --motion-fast: 150ms; --motion-base: 200ms; --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --container-max: 1280px; --container-gutter-desktop: 24px; --container-gutter-tablet: 16px; --container-gutter-phone: 12px;
+}
+*{box-sizing:border-box}html{min-width:320px;-webkit-text-size-adjust:100%}body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.5 var(--font-body);font-feature-settings:"calt" 1;-webkit-font-smoothing:antialiased}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent-on);outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}.shell{max-width:1040px;margin:auto;padding:0 28px 104px}.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}.brand{font-weight:800;letter-spacing:-.05em;font-size:21px}.brand span{display:inline-grid;place-items:center;background:var(--accent);color:var(--accent-on);width:28px;height:28px;border-radius:50%;font-size:15px;margin-right:8px}.top-label{font:12px var(--font-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}.view{display:none}.view.active{display:block}.setup{padding:58px 0 36px;max-width:720px}.eyebrow{font:12px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}.setup h1,.view-title{font:900 clamp(44px,8vw,76px)/.92 var(--font-display);letter-spacing:-.06em;margin:0;max-width:720px}.setup h1 em{font-style:normal;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:.12em;text-underline-offset:.1em}.intro{font-size:18px;line-height:1.5;color:color-mix(in oklab,var(--fg) 75%,var(--bg));max-width:53ch;margin:22px 0 0}.form-card{border-top:1px solid var(--fg);margin-top:38px;padding-top:26px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}.field-label{font-size:14px;font-weight:650;display:block;margin-bottom:8px}.field-hint{font-size:12px;color:var(--muted);margin-top:7px}.subject-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.subject-option{position:relative}.subject-option input{position:absolute;opacity:0}.subject-tile{border:1px solid var(--border);border-radius:16px;min-height:66px;padding:14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-weight:650}.subject-tile:after{content:'';width:18px;height:18px;border-radius:50%;border:1px solid var(--muted)}.subject-option input:checked+.subject-tile{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg);background:color-mix(in oklab,var(--accent) 16%,var(--bg))}.subject-option input:checked+.subject-tile:after{background:var(--accent-on);border:5px solid var(--accent)}.subject-option input:focus-visible+.subject-tile{outline:3px solid var(--accent-on);outline-offset:3px}.input{width:100%;height:50px;border:1px solid var(--border);border-radius:10px;background:var(--bg);padding:0 13px;color:var(--fg)}.input:focus-visible{border-color:var(--accent-on)}.upload{margin-top:24px;border:1px dashed var(--muted);border-radius:16px;padding:16px}.upload-title{font-weight:650}.upload p{font-size:13px;color:var(--muted);margin:3px 0 12px}.upload-actions{display:flex;gap:10px;flex-wrap:wrap}.textarea{display:block;width:100%;min-height:82px;resize:vertical;border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:12px}.file-input{max-width:100%;font-size:13px}.note{margin:12px 0 0;color:var(--muted);font-size:12px}.btn{min-height:48px;border:1px solid transparent;border-radius:var(--radius-pill);padding:10px 20px;font-weight:650;transition:transform var(--motion-fast) var(--ease-standard),background var(--motion-fast) var(--ease-standard),border-color var(--motion-fast) var(--ease-standard);display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{transform:scale(1.04)}.btn:active{transform:scale(.96)}.primary{background:var(--accent);color:var(--accent-on)}.primary:hover{background:var(--accent-hover)}.secondary{background:transparent;border-color:var(--border);color:var(--fg)}.secondary:hover{border-color:var(--fg);background:var(--surface)}.submit-row{display:flex;align-items:center;gap:14px;margin-top:26px}.privacy{font-size:12px;color:var(--muted)}
+.plan-head{padding:46px 0 24px;display:flex;align-items:end;justify-content:space-between;gap:20px}.plan-head .view-title{font-size:clamp(38px,6vw,58px)}.plan-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.chip{border:1px solid var(--border);border-radius:var(--radius-pill);padding:6px 11px;font:12px var(--font-mono);color:var(--muted)}.progress-wrap{padding:16px 0 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px}.progress-track{height:7px;background:var(--surface);border-radius:99px;overflow:hidden;flex:1}.progress-fill{height:100%;width:0;background:var(--accent-on);border-radius:inherit;transition:width .2s}.progress-copy{font:12px var(--font-mono);white-space:nowrap}.plan-tools{display:flex;gap:8px}.plan-tools .btn{min-height:42px;padding:8px 14px;font-size:13px}.day-list{margin-top:14px}.day{display:grid;grid-template-columns:76px minmax(0,1fr) 90px;gap:16px;padding:21px 0;border-bottom:1px solid var(--border);align-items:start}.day-number{font:12px var(--font-mono);color:var(--muted);padding-top:3px}.day-number strong{display:block;color:var(--fg);font-size:16px;margin-bottom:3px}.day-content h3{font-size:18px;line-height:1.25;margin:0;font-weight:700;letter-spacing:-.02em}.day-content p{margin:7px 0 0;color:color-mix(in oklab,var(--fg) 75%,var(--bg));font-size:14px}.question-list{padding-left:18px;margin:10px 0 0;color:color-mix(in oklab,var(--fg) 75%,var(--bg));font-size:13px}.question-list li+li{margin-top:5px}.day-time{text-align:right;font:12px var(--font-mono);color:var(--muted)}.done-control{margin-top:12px;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);cursor:pointer}.done-control input{accent-color:var(--accent-on);width:18px;height:18px;margin:0}.day.is-done .day-content{opacity:.55}.day.is-done h3{text-decoration:line-through;text-decoration-thickness:1px}.revision-label{font:11px var(--font-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--success);margin-bottom:5px}.today-card{margin-top:28px;background:var(--surface);border-radius:var(--radius-md);padding:clamp(20px,5vw,36px)}.today-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.today-top .eyebrow{margin:0}.today-card h2{font:900 clamp(30px,6vw,48px)/.95 var(--font-display);letter-spacing:-.05em;margin:16px 0 8px}.today-card .question-list{font-size:15px;line-height:1.5}.today-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);margin-top:22px;padding-top:16px}.empty-state{padding:48px 0;text-align:center;color:var(--muted)}.bottom-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:color-mix(in oklab,var(--bg) 94%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--border);display:flex;justify-content:center;padding:8px 12px calc(8px + env(safe-area-inset-bottom));gap:8px}.nav-button{flex:1;max-width:210px;background:transparent;border:0;border-radius:var(--radius-pill);min-height:48px;color:var(--muted);font-size:13px;font-weight:650}.nav-button[aria-current="page"]{color:var(--fg);background:var(--surface)}.toast{position:fixed;left:50%;bottom:84px;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:var(--fg);color:var(--bg);padding:10px 15px;border-radius:var(--radius-pill);font-size:13px;transition:opacity .18s,transform .18s;z-index:9}.toast.show{opacity:1;transform:translate(-50%,0)}.coming{font-size:12px;color:var(--muted);margin-top:9px}
+@media(max-width:640px){.shell{padding:0 18px 104px}.topbar{height:62px}.top-label{font-size:10px}.setup{padding-top:40px}.setup h1{font-size:clamp(42px,13vw,62px)}.intro{font-size:16px}.form-row{gap:12px}.form-row.days-row{grid-template-columns:1fr 1fr}.plan-head{padding-top:34px;align-items:start;flex-direction:column}.plan-tools{width:100%}.plan-tools .btn{flex:1}.day{grid-template-columns:54px minmax(0,1fr);gap:10px;padding:18px 0}.day-time{grid-column:2;text-align:left}.day-number strong{font-size:14px}.today-footer{align-items:flex-start;gap:10px;flex-direction:column}.upload-actions{align-items:flex-start;flex-direction:column}}
+@media(max-width:380px){.shell{padding-inline:14px}.form-row.days-row{grid-template-columns:1fr}.subject-options{grid-template-columns:1fr}.submit-row{align-items:flex-start;flex-direction:column}.chip{font-size:11px}}
+</style>
 </head>
 <body>
-<header>
-  <h1>Past Questions → Study Plan</h1>
-  <p class="sub">WAEC / NECO / JAMB · Math + English · 100% offline after load</p>
-  <div id="progressWrap" hidden>
-    <div id="progressBar"><div id="progressFill"></div></div>
-    <div id="progressText"></div>
-  </div>
-</header>
-
+<div class="shell">
+<header class="topbar" data-od-id="app-header"><div class="brand"><span aria-hidden="true">1</span>day one</div><div class="top-label">Your exam, on your terms</div></header>
 <main>
-  <!-- VIEW 1: Setup -->
-  <section id="view-setup" class="card">
-    <h2>1. Setup</h2>
-    <div class="row">
-      <label><input type="checkbox" id="subMath" checked /> Mathematics</label>
-      <label><input type="checkbox" id="subEng" checked /> English</label>
-    </div>
-    <div class="grid2">
-      <label>N days (1–90)<input type="number" id="inDays" value="14" min="1" max="90" /></label>
-      <label>Hours per day (1–8)<input type="number" id="inHours" value="2" min="1" max="8" /></label>
-    </div>
-    <label>Exam date (optional)<input type="date" id="inExam" /></label>
-    <label>Paste past questions (optional)<textarea id="inPaste" rows="4" placeholder="Paste WAEC questions here, one per line. They will be auto-tagged to topics."></textarea></label>
-    <label>Or load .txt / PDF-text file<input type="file" id="inFile" accept=".txt,.pdf" /></label>
-    <p class="hint">V1 supports pasted text + PDF text. Photo / image OCR coming soon.</p>
-    <button id="btnGenerate">Generate N-day plan</button>
-    <button id="btnSample" class="ghost" type="button">Use sample instead</button>
-  </section>
-
-  <!-- VIEW 2: Plan -->
-  <section id="view-plan" class="card" hidden>
-    <h2>2. Your <span id="planN"></span>-day plan</h2>
-    <div class="toolbar">
-      <button id="btnToday">Today focus</button>
-      <button id="btnRebalance" class="ghost">Rebalance missed days</button>
-      <button id="btnReset" class="ghost">Start over</button>
-    </div>
-    <div id="planGrid"></div>
-  </section>
-
-  <!-- VIEW 3: Today -->
-  <section id="view-today" class="card" hidden>
-    <h2>3. Today focus</h2>
-    <div id="todayBody"></div>
-    <button id="btnBack" class="ghost">Back to full plan</button>
-  </section>
-</main>
-
-<footer><small>V1 · rule-based, no login, progress stored in this browser (localStorage).</small></footer>
-<script src="app.js"></script>
+<section id="setupView" class="view active" data-od-id="setup-view">
+<div class="setup"><p class="eyebrow">A study plan that fits real life</p><h1>Make every study day <em>count.</em></h1><p class="intro">Choose your subjects, the days you have, and a daily study window. We’ll turn past questions into a clear plan you can actually finish.</p>
+<form id="setupForm" class="form-card">
+<div><span class="field-label">What are you writing?</span><div class="subject-options">
+<label class="subject-option"><input type="checkbox" name="subject" value="math" checked><span class="subject-tile">Mathematics <span aria-hidden="true">∑</span></span></label>
+<label class="subject-option"><input type="checkbox" name="subject" value="english" checked><span class="subject-tile">English <span aria-hidden="true">Aa</span></span></label>
+</div></div>
+<div class="form-row days-row"><label><span class="field-label">Days until your exam</span><input class="input" id="daysInput" type="number" min="1" max="90" value="14" required><span class="field-hint">Choose 1–90 days</span></label><label><span class="field-label">Hours per day</span><input class="input" id="hoursInput" type="number" min="0.5" max="12" step="0.5" value="2" required><span class="field-hint">Your realistic daily limit</span></label></div>
+<div class="form-row"><label><span class="field-label">Exam date <span style="font-weight:400;color:var(--muted)">· optional</span></span><input class="input" id="examDate" type="date"><span class="field-hint">For countdown context only</span></label><div><span class="field-label">Plan style</span><div class="field-hint" style="font-size:14px;color:var(--fg);padding-top:8px">Frequent topics first, with revision days built in.</div></div></div>
+<div class="upload"><div class="upload-title">Have your own past questions?</div><p>Optional — add text to include your questions alongside the sample bank.</p><div class="upload-actions"><input id="questionFile" class="file-input" type="file" accept=".txt,.pdf,text/plain,application/pdf,image/*" aria-label="Choose a text or PDF question file"></div><div id="pdfNotice" class="coming" hidden>PDF text extraction needs an internet connection. Paste the question text below, or try again online.</div><textarea class="textarea" id="questionText" placeholder="Paste past-question text here…" aria-label="Paste past-question text"></textarea><p class="note">Text and text-based PDFs only. Image / photo OCR is coming soon.</p></div>
+<div class="submit-row"><button class="btn primary" type="submit">Build my study plan <span aria-hidden="true">→</span></button><span class="privacy">Saved on this device. No account needed.</span></div>
+</form></div></section>
+<section id="planView" class="view" data-od-id="plan-view"><div class="plan-head"><div><p class="eyebrow">Your plan</p><h1 class="view-title">A good plan starts today.</h1><div class="plan-meta" id="planMeta"></div></div><div class="plan-tools"><button class="btn secondary" id="rebalanceBtn" type="button">Rebalance</button><button class="btn secondary" id="editBtn" type="button">Edit setup</button></div></div><div class="progress-wrap"><div class="progress-track" role="progressbar" aria-label="Study plan progress" aria-valuemin="0" aria-valuemax="100" id="progressTrack"><div class="progress-fill" id="progressFill"></div></div><span class="progress-copy" id="progressCopy">0% complete</span></div><div id="dayList" class="day-list"></div></section>
+<section id="todayView" class="view" data-od-id="today-view"><div class="plan-head"><div><p class="eyebrow">Today’s focus</p><h1 class="view-title">One day at a time.</h1></div><button class="btn secondary" id="todayEditBtn" type="button">Edit plan</button></div><div id="todayContent"></div></section>
+</main></div>
+<nav class="bottom-nav" aria-label="Main navigation" data-od-id="bottom-navigation"><button class="nav-button" id="navToday" data-view="today" type="button">Today</button><button class="nav-button" id="navPlan" data-view="plan" type="button">Full plan</button><button class="nav-button" id="navSetup" data-view="setup" type="button">Setup</button></nav><div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+const STORAGE_KEY='bwaiw-plan-v1';
+const BANK={math:[
+['Number bases','Convert between number bases and perform operations.'],['Fractions, decimals & percentages','Solve problems involving fractions, decimals and percentages.'],['Ratio, rate & proportion','Share quantities in a given ratio and solve rate problems.'],['Indices & logarithms','Simplify expressions using laws of indices and logarithms.'],['Sets','Represent sets and solve problems with Venn diagrams.'],['Algebraic expressions','Expand, factorise and simplify algebraic expressions.'],['Linear equations & inequalities','Solve linear equations and interpret inequalities.'],['Sequences & series','Find terms and sums of arithmetic and geometric sequences.'],['Plane geometry','Apply angle properties and geometric theorems.'],['Mensuration','Calculate perimeter, area, surface area and volume.'],['Coordinate geometry','Use coordinates, gradients and equations of straight lines.'],['Trigonometry','Apply sine, cosine and tangent to triangles and bearings.'],['Statistics','Organise data and calculate averages and range.'],['Probability','Find probabilities of single and combined events.'],['Vectors & transformations','Work with vectors, reflection, rotation and enlargement.']],english:[
+['Comprehension','Read a passage and identify main ideas, tone and inference.'],['Summary writing','Select key points and express them concisely.'],['Essay writing','Plan and write a clear, well-structured composition.'],['Grammar & usage','Identify parts of speech and correct common usage errors.'],['Tenses & concord','Apply tense consistency and subject–verb agreement.'],['Vocabulary & idioms','Interpret words in context and use idiomatic expressions.'],['Oral English','Practise vowel and consonant sounds, stress and intonation.'],['Lexis & structure','Choose precise words and complete sentence patterns.'],['Literature','Interpret themes, character, setting and literary devices.'],['Formal & informal letters','Use the correct format, register and tone.']]};
+const MATH_Q=['Convert 101101₂ to base ten.','A trader buys an item for ₦4,800 and sells it for ₦6,000. Find the percentage profit.','Simplify (3x²y)(2xy³).','Solve 3(2x − 1) = 21.','Find the 12th term of 4, 9, 14, …','Two angles in a triangle are 48° and 67°. Find the third angle.','Find the area of a circle of radius 7 cm. Use π = 22/7.','A line passes through (2, 3) and (6, 11). Find its gradient.','A bag has 3 red and 5 blue counters. Find P(red).','Find sin θ if the opposite side is 5 and hypotenuse is 13.','If A={1,2,3,4} and B={3,4,5}, find A∩B.','Solve 2x + 5 < 17 for integer x.','Find the mean of 4, 7, 8, 11, 15.','Simplify log₁₀ 1000.','Reflect the point (−2, 5) in the x-axis.'];
+const ENG_Q=['Read a short passage and state its main idea in one sentence.','From a passage, identify one fact and one opinion.','Summarise the writer’s two reasons for supporting the proposal.','Write an essay arguing whether school uniforms should be compulsory.','Choose the correct form: Neither of the boys (was/were) late.','Change to reported speech: “I am ready,” Ada said.','Give a synonym for “reluctant” as used in a sentence.','Identify the stressed syllable in “photography”.','Complete: If she had studied, she ___ the examination.','Write a formal letter to your principal requesting a library improvement.','Explain the effect of a metaphor in a short prose extract.','Choose the correct preposition: She insisted ___ paying.','Rewrite using the passive voice: The committee approved the plan.','Give the opposite of “scarce” in context.','Write a short summary using no more than 30 words.'];
+let state=load();
+function load(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))}catch(e){return null}}
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){toast('Could not save on this device.')}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2300)}
+function tagText(text){const lines=text.split(/\n+/).map(x=>x.trim()).filter(Boolean);return lines.map(line=>{const s=line.toLowerCase();let subject='',topic='';for(const [sub,topics] of Object.entries(BANK)){for(const t of topics){const keys=t[0].toLowerCase().split(/[ &/]+/).filter(k=>k.length>3);if(keys.some(k=>s.includes(k))){subject=sub;topic=t[0];break}}if(topic)break}return {text:line,subject,topic}})}
+function generatePlan({useMath,useEng,days,hours,customQuestions=[]}){
+ days=Math.max(1,Math.min(90,Math.floor(Number(days)||1)));hours=Math.max(.5,Math.min(12,Number(hours)||1));
+ const revisionDays=days>=5?Math.floor(days*.2):days>=3?1:0,studyDays=days-revisionDays;
+ const subjects=[];if(useMath)subjects.push('math');if(useEng)subjects.push('english');if(!subjects.length)subjects.push('math');
+ const items=[];subjects.forEach(sub=>BANK[sub].forEach((t,i)=>items.push({subject:sub,topic:t[0],desc:t[1],weight:sub==='math'?[3,3,2,2,2,4,4,2,2,2,2,3,2,2,1][i]:[4,3,3,3,3,2,2,2,2,2][i]})));
+ const questionBanks={math:MATH_Q,english:ENG_Q};
+ if(!studyDays)return Array.from({length:days},(_,i)=>({number:i+1,revision:true,topics:['Revision & mock practice'],questions:[],minutes:Math.round(hours*60),done:false}));
+ let slots=[];
+ if(studyDays<items.length){let cursor=0,total=items.reduce((a,b)=>a+b.weight,0),acc=0;for(let s=0;s<studyDays;s++){let target=(s+1)*total/studyDays,group=[];while(cursor<items.length&&(acc<target||group.length===0)){group.push(items[cursor]);acc+=items[cursor++].weight}slots.push(group)}}
+ else {slots=items.map(x=>[x]);let ix=0;while(slots.length<studyDays){slots.push([{...items[ix%items.length],deep:true}]);ix++}}
+ const qPerDay=Math.max(1,Math.floor(hours*(subjects.includes('math')?5:1)));let qCursor={math:0,english:0};
+ let plan=slots.map((group,i)=>{const subs=[...new Set(group.map(x=>x.subject))];let qs=[];subs.forEach(sub=>{const bank=questionBanks[sub],count=Math.max(1,Math.round(qPerDay/subs.length));for(let n=0;n<count;n++){qs.push(bank[qCursor[sub]%bank.length]);qCursor[sub]++}});return {number:i+1,revision:false,topics:[...new Set(group.map(x=>x.topic+(x.deep?' · deep practice':'')))],description:[...new Set(group.map(x=>x.desc))].join(' '),questions:qs,minutes:Math.round(hours*60),done:false}});
+ if(customQuestions.length){const tagged=customQuestions.filter(q=>q.topic),untagged=customQuestions.filter(q=>!q.topic);tagged.forEach(q=>{const idx=plan.findIndex(d=>d.topics.some(t=>t.toLowerCase().includes(q.topic.toLowerCase())));(plan[Math.max(0,idx)].questions).push(q.text)});if(untagged.length)plan[plan.length-1].questions.push(...untagged.map(q=>q.text))}
+ for(let i=0;i<revisionDays;i++){plan.push({number:plan.length+1,revision:true,topics:[i===revisionDays-1?'Mock exam & final review':'Revision & mixed practice'],description:'Revisit completed topics, then solve a timed mixed set.',questions:subjects.flatMap(s=>questionBanks[s].slice(-2)),minutes:Math.round(hours*60),done:false})}
+ plan=plan.slice(0,days);while(plan.length<days)plan.push({number:plan.length+1,revision:true,topics:['Revision & mock practice'],description:'Review your toughest topics and solve a timed set.',questions:[],minutes:Math.round(hours*60),done:false});return plan;
+}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===name+'View'));document.querySelectorAll('.nav-button').forEach(b=>{if(b.dataset.view===name)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});if(name==='plan')renderPlan();if(name==='today')renderToday()}
+function renderPlan(){if(!state)return;const done=state.plan.filter(d=>d.done).length,percent=Math.round(done/state.plan.length*100);document.getElementById('planMeta').innerHTML=`<span class="chip">${state.plan.length} days</span><span class="chip">${esc(state.subjectLabel)}</span><span class="chip">${esc(state.hours)} hrs / day</span>${state.examDate?`<span class="chip">Exam ${esc(state.examDate)}</span>`:''}`;document.getElementById('progressFill').style.width=percent+'%';document.getElementById('progressTrack').setAttribute('aria-valuenow',percent);document.getElementById('progressCopy').textContent=`${percent}% complete · ${done}/${state.plan.length} days`;
+ document.getElementById('dayList').innerHTML=state.plan.map((d,i)=>`<article class="day ${d.done?'is-done':''}" data-od-id="study-day-${i+1}"><div class="day-number"><strong>DAY ${i+1}</strong>${d.revision?'REVIEW':''}</div><div class="day-content">${d.revision?'<div class="revision-label">Revision day</div>':''}<h3>${d.topics.map(esc).join(' + ')}</h3><p>${esc(d.description||'Consolidate your learning with focused practice.')}</p><ol class="question-list">${d.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ol><label class="done-control"><input type="checkbox" data-done="${i}" ${d.done?'checked':''}> Mark day complete</label></div><div class="day-time">${d.minutes} min</div></article>`).join('');document.querySelectorAll('[data-done]').forEach(el=>el.addEventListener('change',e=>{state.plan[Number(e.target.dataset.done)].done=e.target.checked;save();renderPlan()}))}
+function renderToday(){const idx=state?state.plan.findIndex(d=>!d.done):-1,el=document.getElementById('todayContent');if(!state){el.innerHTML='<div class="empty-state">Build a plan first to see today’s focus.</div>';return}if(idx<0){el.innerHTML='<div class="empty-state"><strong>You’ve completed your plan.</strong><br>Take a moment to celebrate your work.</div>';return}const d=state.plan[idx];el.innerHTML=`<article class="today-card" data-od-id="today-focus"><div class="today-top"><p class="eyebrow">DAY ${idx+1} OF ${state.plan.length}</p><span class="chip">${d.minutes} min</span></div>${d.revision?'<div class="revision-label" style="margin-top:22px">Revision day</div>':''}<h2>${d.topics.map(esc).join(' + ')}</h2><p>${esc(d.description||'Consolidate your learning with focused practice.')}</p><ol class="question-list">${d.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ol><div class="today-footer"><span class="meta">${d.questions.length} practice questions · ${d.minutes} min</span><label class="done-control"><input type="checkbox" id="todayDone"> Mark today complete</label></div></article>`;document.getElementById('todayDone').addEventListener('change',e=>{state.plan[idx].done=e.target.checked;save();renderToday();toast('Progress saved on this device')})}
+function rebalance(){if(!state)return;const pending=state.plan.filter(d=>!d.done);state.plan=state.plan.filter(d=>d.done).concat(pending);state.plan.forEach((d,i)=>d.number=i+1);save();renderPlan();toast('Unfinished study days moved forward')}
+function formQuestions(){return tagText(document.getElementById('questionText').value)}
+document.getElementById('setupForm').addEventListener('submit',e=>{e.preventDefault();const subjects=[...document.querySelectorAll('input[name="subject"]:checked')].map(x=>x.value);if(!subjects.length){toast('Choose at least one subject');return}const days=Number(document.getElementById('daysInput').value),hours=Number(document.getElementById('hoursInput').value);if(!Number.isInteger(days)||days<1||days>90){toast('Enter a whole number of days from 1 to 90');return}if(!Number.isFinite(hours)||hours<.5||hours>12){toast('Choose between 0.5 and 12 hours per day');return}const custom=formQuestions();state={days,hours,examDate:document.getElementById('examDate').value,subjectLabel:subjects.map(s=>s==='math'?'Math':'English').join(' + '),plan:generatePlan({useMath:subjects.includes('math'),useEng:subjects.includes('english'),days,hours,customQuestions:custom})};save();showView('plan')});
+document.getElementById('rebalanceBtn').addEventListener('click',rebalance);document.getElementById('editBtn').addEventListener('click',()=>showView('setup'));document.getElementById('todayEditBtn').addEventListener('click',()=>showView('setup'));
+document.querySelectorAll('.nav-button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.view!=='setup'&&!state){toast('Build your plan to get started');return}showView(b.dataset.view)}));
+document.getElementById('questionFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;if(/image\//.test(f.type)){document.getElementById('pdfNotice').hidden=false;document.getElementById('pdfNotice').textContent='Photo and image question uploads are coming soon. Paste text instead.';e.target.value='';return}if(f.name.toLowerCase().endsWith('.pdf')||f.type==='application/pdf'){document.getElementById('pdfNotice').hidden=false;document.getElementById('pdfNotice').textContent='PDF text extraction is not available offline yet. Paste selectable question text below.';return}try{document.getElementById('questionText').value+=(document.getElementById('questionText').value?'\n':'')+await f.text();toast('Text file added')}catch(err){toast('Could not read this file')}});
+if(state&&Array.isArray(state.plan)){showView('today')}else{document.getElementById('navSetup').setAttribute('aria-current','page')}
+// Expose pure seams for direct smoke tests without coupling scheduler tests to the UI.
+if(typeof module!=='undefined'&&module.exports)module.exports={generatePlan,tagText};
+})();
+</script>
 </body>
 </html>
