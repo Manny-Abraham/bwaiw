@@ -1,0 +1,23 @@
+*{box-sizing:border-box}body{font-family:system-ui,Arial,sans-serif;margin:0;background:#f4f6fb;color:#111}
+header{background:#1a2a6c;color:#fff;padding:16px;text-align:center}
+header .sub{opacity:.85;margin:4px 0 8px}
+main{max-width:720px;margin:0 auto;padding:12px}
+.card{background:#fff;border-radius:12px;padding:16px;margin:12px 0;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.row{display:flex;gap:16px;margin:8px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;margin:10px 0;font-weight:600}
+input[type=number],input[type=date],textarea{width:100%;padding:10px;margin-top:4px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+textarea{font-weight:400}
+button{background:#1a2a6c;color:#fff;border:0;border-radius:8px;padding:12px 16px;font-size:16px;margin:6px 6px 0 0;cursor:pointer}
+button.ghost{background:#e6eaf6;color:#1a2a6c}
+.hint{color:#555;font-size:13px}
+.toolbar{margin-bottom:8px}
+.day{border:1px solid #dfe4f2;border-radius:10px;padding:10px;margin:8px 0}
+.day.done{opacity:.6;background:#eef7ee}
+.day h3{margin:0 0 4px;font-size:16px}
+.badge{display:inline-block;font-size:12px;background:#1a2a6c;color:#fff;border-radius:20px;padding:2px 10px;margin-right:6px}
+.badge.rev{background:#0a7a3d}.badge.eng{background:#6c1a5a}
+.q{font-size:14px;margin:4px 0}
+#progressBar{background:rgba(255,255,255,.3);border-radius:20px;height:10px;overflow:hidden}
+#progressFill{background:#4caf50;height:10px;width:0%}
+#progressText{font-size:13px;margin-top:4px}
